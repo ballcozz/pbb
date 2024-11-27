@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator PBB</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container ">
+        <h1>Kalkulator PBB</h1>
+        <form method="POST">
+            <div class="input-group">
+                <label for="num1">Angka Pertama</label>
+                <input type="number" name="num1" id="num1" required>
+            </div>
+            <div class="input-group">
+                <label for="num2">Angka Kedua</label>
+                <input type="number" name="num2" id="num2" required>
+            </div>
+            <button type="submit">Hitung PBB</button>
+            <p4>By Muhammad Iqbal Maulana</p4>
+        </form>
+
+        {% if result is not none %}
+            <div class="result">
+                <h2>Hasil PBB nya adalah: <span>{{ result }}</span></h2>
+                <p>{{ steps }}</p>
+                <pre>Algoritma Euclidean:
+1. Ambil sisa pembagian dua angka.
+2. Ulangi hingga sisa pembagian 0.
+3. Angka terakhir selain sisa adalah PBB.</pre>
+            </div>
+        {% elif error %}
+            <div class="error">
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
